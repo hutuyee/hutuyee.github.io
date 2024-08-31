@@ -1,7 +1,7 @@
 # Q群绑 插件 Wiki
 
 ## Config.yml
-```
+```Config.yml
 ws: "ws://127.0.0.1:3001" #正向ws
 踢出玩家: |
   您已被踢出服务器。
@@ -39,6 +39,7 @@ Vault:
 ```
 
 在权限方法中 仅支持两个变量 %player_name% 和 %player_uuid%
+
 在点券及Vault中 仅支持以下变量
 - %player_name%  --- 玩家名
 - %获取点券% / %获取Vault% ---输入命令后玩家可获得的数量
