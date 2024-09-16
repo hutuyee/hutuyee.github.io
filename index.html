@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>McQQRun</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f8;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #0056b3;
+            color: white;
+        }
+
+        .button {
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .button:hover {
+            background-color: #2682e4;
+            box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .box {
+            flex: 1;
+            min-width: 300px;
+            margin: 10px;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>McQQRun</h1>
+        <p>基于 NTQQ and MineCraft Plugin实现的 QQ BOT</p>
+        <a href="https://hutuyee.github.io/Q群绑" class="button" target="_blank">快速开始</a>
+    </header>
+    <div class="content">
+        <div class="box">
+            <h2>开始前的准备</h2>
+            <p>详细步骤介绍，快速部署 Windows 端操作系统，无需虚拟机，内存友好。</p>
+        </div>
+        <div class="box">
+            <h2>安全稳定</h2>
+            <p>通过 Electron 方案构建桌面端，采用 NTQQ 自身的安全规范化设计，可与手机 QQ 同步登录。</p>
+        </div>
+        <div class="box">
+            <h2>运行稳定</h2>
+            <p>通过 OneBot 11 标准实现，可以快速部署和构建 LLOneBot 平台，而不需烦琐的功能定制。</p>
+        </div>
+    </div>
+</body>
+
+</html>
