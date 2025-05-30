@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>McToQQ 插件配置</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f7f9fb;
+            color: #222;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,86,179,0.08);
+            padding: 32px 28px;
+        }
+        h1 {
+            color: #0056b3;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 18px;
+            display: block;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 8px 12px;
+            margin: 8px 0 16px 0;
+            border: 1px solid #cfd8dc;
+            border-radius: 6px;
+            font-size: 16px;
+            background: #f4f4f8;
+        }
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+        .switch {
+            display: inline-block;
+            width: 44px;
+            height: 24px;
+            position: relative;
+            margin-right: 10px;
+        }
+        .switch input {display:none;}
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: #ccc;
+            border-radius: 24px;
+            transition: .4s;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background: white;
+            border-radius: 50%;
+            transition: .4s;
+        }
+        input:checked + .slider {
+            background: #008CBA;
+        }
+        input:checked + .slider:before {
+            transform: translateX(20px);
+        }
+        .section {
+            margin-bottom: 28px;
+        }
+        .group-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .group-item {
+            background: #e3f2fd;
+            color: #0056b3;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 15px;
+        }
+        .save-btn {
+            background: #008CBA;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 32px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 18px;
+            transition: background 0.2s;
+        }
+        .save-btn:hover {
+            background: #0056b3;
+        }
+        .desc {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .format-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 12px;
+        }
+        .format-table th, .format-table td {
+            border: 1px solid #cfd8dc;
+            padding: 6px 10px;
+            text-align: left;
+        }
+        .format-table th {
+            background: #f0f7fa;
+        }
+        pre {
+            background: #f4f4f8;
+            border-radius: 8px;
+            padding: 18px 14px;
+            font-size: 15px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>McToQQ 插件配置</h1>
+        <form>
+            <div class="section">
+                <label for="ws">WebSocket 地址</label>
+                <input type="text" id="ws" value="ws://180.188.21.55:3001">
+            </div>
+            <div class="section">
+                <label>开关</label>
+                <label class="switch">
+                    <input type="checkbox" id="enable" checked>
+                    <span class="slider"></span>
+                </label>
+                <span id="enable-label">已启用</span>
+            </div>
+            <div class="section">
+                <label>信息传入游戏</label>
+                <label class="switch">
+                    <input type="checkbox" id="toGame" checked>
+                    <span class="slider"></span>
+                </label>
+                <span id="toGame-label">已启用</span>
+            </div>
+            <div class="section">
+                <label>信息传入QQ</label>
+                <label class="switch">
+                    <input type="checkbox" id="toQQ" checked>
+                    <span class="slider"></span>
+                </label>
+                <span id="toQQ-label">已启用</span>
+            </div>
+            <div class="section">
+                <label>群号列表</label>
+                <div class="group-list" id="group-list">
+                    <span class="group-item">288526441</span>
+                    <span class="group-item">654321</span>
+                </div>
+                <input type="text" id="group-input" placeholder="添加群号...">
+                <button type="button" onclick="addGroup()">添加</button>
+            </div>
+            <div class="section">
+                <label>消息格式配置</label>
+                <table class="format-table">
+                    <tr><th>类型</th><th>格式</th></tr>
+                    <tr><td>ToQQ</td><td><input type="text" id="formatToQQ" value="[MC] %player%: %message%"></td></tr>
+                    <tr><td>ToMC</td><td><input type="text" id="formatToMC" value="[QQ] %user%: %message%"></td></tr>
+                </table>
+                <div class="desc">MC的信息可以有颜色代码&，%user% -- QQ号，%message% -- 信息，%name% -- 群聊名字，%groupID% -- 群号，%groupName% -- 群名(需http，暂没写)</div>
+            </div>
+            <div class="section">
+                <label>游戏事件</label>
+                <table class="format-table">
+                    <tr><th>事件</th><th>启用</th><th>消息内容</th></tr>
+                    <tr><td>加入游戏</td><td><input type="checkbox" id="joinGame"></td><td><input type="text" id="joinMsg" value="%player_name% 加入游戏"></td></tr>
+                    <tr><td>离开游戏</td><td><input type="checkbox" id="leaveGame"></td><td><input type="text" id="leaveMsg" value="%player_name% 离开游戏"></td></tr>
+                    <tr><td>死亡</td><td><input type="checkbox" id="deathGame"></td><td><input type="text" id="deathMsg" value="%player_name% 死亡"></td></tr>
+                </table>
+            </div>
+            <div class="section">
+                <label>替换信息</label>
+                <table class="format-table">
+                    <tr><th>类型</th><th>内容</th></tr>
+                    <tr><td>图片</td><td><input type="text" id="replaceImg" value="[图片]"></td></tr>
+                    <tr><td>表情</td><td><input type="text" id="replaceFace" value="[表情]"></td></tr>
+                    <tr><td>mface</td><td><input type="text" id="replaceMface" value="[某不知名图]"></td></tr>
+                    <tr><td>艾特</td><td><input type="text" id="replaceAt" value="[艾特]"></td></tr>
+                    <tr><td>群公告等json</td><td><input type="text" id="replaceJson" value="[群公告]"></td></tr>
+                    <tr><td>视频</td><td><input type="text" id="replaceVideo" value="[视频]"></td></tr>
+                </table>
+            </div>
+            <button class="save-btn" type="button">保存配置</button>
+        </form>
+    </div>
+    <div class="container">
+        <h1>McToQQ 插件配置代码</h1>
+        <pre style="background:#f4f4f8;border-radius:8px;padding:18px 14px;font-size:15px;overflow-x:auto;">
+ws: "ws://127.0.0.1:3001"
+开关: true
+信息传入游戏: true
+信息传入QQ: true
+# 群号列表
+群号:
+  - "288526441"
+  - "654321"
+
+# 消息格式配置
+格式:
+  ToQQ: "[MC] %player%: %message%"
+  ToMC: "[QQ] %user%: %message%"
+  # MC的信息可以有颜色代码&
+  # %user% -- QQ号
+  # %message% -- 信息
+  # %name% -- 群聊名字
+  # %groupID% -- 群号
+  # %groupName% -- 群名(需http，暂没写)
+
+游戏事件:
+  加入游戏:
+    bool: false
+    m: "%player_name% 加入游戏"
+  离开游戏:
+    bool: false
+    m: "%player_name% 离开游戏"
+  死亡:
+    bool: false
+    m: "%player_name% 死亡"
+  # 游戏内发送至QQ
+替换信息:
+  图片: "[图片]"
+  表情: "[表情]"
+  mface: "[某不知名图]" # 懒得测试了
+  艾特: "[艾特]"
+  群公告等json: "[群公告]"
+  视频: "[视频]"
+        </pre>
+    </div>
+    <script>
+        // 群号添加功能
+        function addGroup() {
+            const input = document.getElementById('group-input');
+            const val = input.value.trim();
+            if(val) {
+                const list = document.getElementById('group-list');
+                const span = document.createElement('span');
+                span.className = 'group-item';
+                span.innerText = val;
+                list.appendChild(span);
+                input.value = '';
+            }
+        }
+        // 开关文字变化
+        document.getElementById('enable').addEventListener('change', function() {
+            document.getElementById('enable-label').innerText = this.checked ? '已启用' : '已关闭';
+        });
+        document.getElementById('toGame').addEventListener('change', function() {
+            document.getElementById('toGame-label').innerText = this.checked ? '已启用' : '已关闭';
+        });
+        document.getElementById('toQQ').addEventListener('change', function() {
+            document.getElementById('toQQ-label').innerText = this.checked ? '已启用' : '已关闭';
+        });
+    </script>
+</body>
+</html>
