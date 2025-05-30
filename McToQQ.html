@@ -181,32 +181,8 @@ ws: "ws://127.0.0.1:3001"
   艾特: "[艾特]"
   群公告等json: "[群公告]"
   视频: "[视频]"
+  文件: "[文件]"
         </pre>
     </div>
-    <script>
-        // 群号添加功能
-        function addGroup() {
-            const input = document.getElementById('group-input');
-            const val = input.value.trim();
-            if(val) {
-                const list = document.getElementById('group-list');
-                const span = document.createElement('span');
-                span.className = 'group-item';
-                span.innerText = val;
-                list.appendChild(span);
-                input.value = '';
-            }
-        }
-        // 开关文字变化
-        document.getElementById('enable').addEventListener('change', function() {
-            document.getElementById('enable-label').innerText = this.checked ? '已启用' : '已关闭';
-        });
-        document.getElementById('toGame').addEventListener('change', function() {
-            document.getElementById('toGame-label').innerText = this.checked ? '已启用' : '已关闭';
-        });
-        document.getElementById('toQQ').addEventListener('change', function() {
-            document.getElementById('toQQ-label').innerText = this.checked ? '已启用' : '已关闭';
-        });
-    </script>
 </body>
 </html>
