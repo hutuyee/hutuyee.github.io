@@ -7,23 +7,24 @@
     <style>
         body {
             font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f7f9fb;
-            color: #222;
+            background: #181c24;
+            color: #e3e6eb;
             margin: 0;
             padding: 0;
         }
         .container {
             max-width: 800px;
             margin: 40px auto;
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 4px 24px rgba(0,86,179,0.08);
-            padding: 32px 28px;
+            background: #232837;
+            border-radius: 14px;
+            box-shadow: 0 4px 32px rgba(0,0,0,0.45);
+            padding: 36px 30px;
         }
         h1 {
-            color: #0056b3;
+            color: #6cb6ff;
             text-align: center;
             margin-bottom: 24px;
+            letter-spacing: 2px;
         }
         label {
             font-weight: bold;
@@ -124,91 +125,24 @@
             background: #f0f7fa;
         }
         pre {
-            background: #f4f4f8;
+            background: #181c24;
             border-radius: 8px;
             padding: 18px 14px;
             font-size: 15px;
             overflow-x: auto;
+            color: #b8c7e0;
+            border: 1px solid #232837;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.25);
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>McToQQ 插件配置</h1>
-        <form>
-            <div class="section">
-                <label for="ws">WebSocket 地址</label>
-                <input type="text" id="ws" value="ws://180.188.21.55:3001">
-            </div>
-            <div class="section">
-                <label>开关</label>
-                <label class="switch">
-                    <input type="checkbox" id="enable" checked>
-                    <span class="slider"></span>
-                </label>
-                <span id="enable-label">已启用</span>
-            </div>
-            <div class="section">
-                <label>信息传入游戏</label>
-                <label class="switch">
-                    <input type="checkbox" id="toGame" checked>
-                    <span class="slider"></span>
-                </label>
-                <span id="toGame-label">已启用</span>
-            </div>
-            <div class="section">
-                <label>信息传入QQ</label>
-                <label class="switch">
-                    <input type="checkbox" id="toQQ" checked>
-                    <span class="slider"></span>
-                </label>
-                <span id="toQQ-label">已启用</span>
-            </div>
-            <div class="section">
-                <label>群号列表</label>
-                <div class="group-list" id="group-list">
-                    <span class="group-item">288526441</span>
-                    <span class="group-item">654321</span>
-                </div>
-                <input type="text" id="group-input" placeholder="添加群号...">
-                <button type="button" onclick="addGroup()">添加</button>
-            </div>
-            <div class="section">
-                <label>消息格式配置</label>
-                <table class="format-table">
-                    <tr><th>类型</th><th>格式</th></tr>
-                    <tr><td>ToQQ</td><td><input type="text" id="formatToQQ" value="[MC] %player%: %message%"></td></tr>
-                    <tr><td>ToMC</td><td><input type="text" id="formatToMC" value="[QQ] %user%: %message%"></td></tr>
-                </table>
-                <div class="desc">MC的信息可以有颜色代码&，%user% -- QQ号，%message% -- 信息，%name% -- 群聊名字，%groupID% -- 群号，%groupName% -- 群名(需http，暂没写)</div>
-            </div>
-            <div class="section">
-                <label>游戏事件</label>
-                <table class="format-table">
-                    <tr><th>事件</th><th>启用</th><th>消息内容</th></tr>
-                    <tr><td>加入游戏</td><td><input type="checkbox" id="joinGame"></td><td><input type="text" id="joinMsg" value="%player_name% 加入游戏"></td></tr>
-                    <tr><td>离开游戏</td><td><input type="checkbox" id="leaveGame"></td><td><input type="text" id="leaveMsg" value="%player_name% 离开游戏"></td></tr>
-                    <tr><td>死亡</td><td><input type="checkbox" id="deathGame"></td><td><input type="text" id="deathMsg" value="%player_name% 死亡"></td></tr>
-                </table>
-            </div>
-            <div class="section">
-                <label>替换信息</label>
-                <table class="format-table">
-                    <tr><th>类型</th><th>内容</th></tr>
-                    <tr><td>图片</td><td><input type="text" id="replaceImg" value="[图片]"></td></tr>
-                    <tr><td>表情</td><td><input type="text" id="replaceFace" value="[表情]"></td></tr>
-                    <tr><td>mface</td><td><input type="text" id="replaceMface" value="[某不知名图]"></td></tr>
-                    <tr><td>艾特</td><td><input type="text" id="replaceAt" value="[艾特]"></td></tr>
-                    <tr><td>群公告等json</td><td><input type="text" id="replaceJson" value="[群公告]"></td></tr>
-                    <tr><td>视频</td><td><input type="text" id="replaceVideo" value="[视频]"></td></tr>
-                </table>
-            </div>
-            <button class="save-btn" type="button">保存配置</button>
-        </form>
-    </div>
+
     <div class="container">
         <h1>McToQQ 插件配置代码</h1>
-        <pre style="background:#f4f4f8;border-radius:8px;padding:18px 14px;font-size:15px;overflow-x:auto;">
+        <pre style="background:#46465c;border-radius:8px;padding:18px 14px;font-size:15px;overflow-x:auto;">
 ws: "ws://127.0.0.1:3001"
 开关: true
 信息传入游戏: true
