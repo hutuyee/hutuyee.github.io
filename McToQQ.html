@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>McToQQ 插件配置</title>
+    <title>McToQQ-Bukkit 插件配置</title>
     <style>
         body {
             font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', Tahoma, Geneva, Verdana, sans-serif;
@@ -134,6 +134,20 @@
             border: 1px solid #232837;
             box-shadow: 0 2px 12px rgba(0,0,0,0.25);
         }
+        .log-list {
+            background: #20242a;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 2em;
+            box-shadow: 0 2px 12px #0004;
+            border-left: 4px solid #7ecfff;
+        }
+        .log-list ul {
+            margin: 0 0 0 1.2em;
+            padding: 0;
+            color: #b3e5ff;
+            font-size: 1em;
+        }
     </style>
 </head>
 <body>
@@ -142,7 +156,7 @@
 
     <div class="container">
         <h1>McToQQ 插件配置代码</h1>
-        <pre style="background:#46465c;border-radius:8px;padding:18px 14px;font-size:15px;overflow-x:auto;">
+        <pre style="background:#181c20;color:#e6e6e6;border-radius:8px;padding:18px 16px;font-size:1em;line-height:1.7;overflow-x:auto;margin:1em 0 2em 0;box-shadow:0 2px 12px #0006;border:1px solid #2a2e35;user-select:all;">
 ws: "ws://127.0.0.1:3001"
 开关: true
 信息传入游戏: true
@@ -183,6 +197,18 @@ ws: "ws://127.0.0.1:3001"
   视频: "[视频]"
   文件: "[文件]"
         </pre>
+    </div>
+
+    <h2 style="color:#7ecfff;margin-top:2.5em;">插件日志/更新记录</h2>
+    <div class="log-list" style="background:#20242a;border-radius:8px;padding:16px 16px 8px 16px;margin-bottom:2em;box-shadow:0 2px 12px #0004;border-left:4px solid #7ecfff;">
+        <ul style="margin:0 0 0 1.2em;padding:0;color:#b3e5ff;font-size:1em;">
+            <li>2.0 重新优化逻辑，提升运行速度，新增自定义信息类型，重载 mctoqq reload</li>
+            <li>2.0.1 新增死亡/加入/离开 游戏事件</li>
+            <li>2.0.2 [ + ] 选择信息传入的对象</li>
+            <li>2.0.3 [ + ] 添加命令 mctoqq on --加入聊天白名单 / mctoqq off --去掉聊天白名单</li>
+            <li>[ + ] 修复某不知名bug</li>
+            <li>[ + ] config新增 过滤规则 具体看文档</li>
+        </ul>
     </div>
 </body>
 </html>
