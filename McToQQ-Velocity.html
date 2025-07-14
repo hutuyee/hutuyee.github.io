@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>McToQQ-Velocity 插件配置与文档</title>
+  <style>
+    body {
+      background: #181c20;
+      color: #e6e6e6;
+      font-family: 'JetBrains Mono', 'Fira Mono', 'Consolas', 'monospace', 'Microsoft YaHei', sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto 40px auto;
+      background: #23272e;
+      border-radius: 12px;
+      box-shadow: 0 4px 32px #000a;
+      padding: 32px 24px 24px 24px;
+    }
+    h1, h2, h3 {
+      color: #7ecfff;
+      font-weight: 700;
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
+    }
+    h1 {
+      font-size: 2.2em;
+      text-align: center;
+      margin-top: 0;
+    }
+    h2 {
+      font-size: 1.4em;
+      border-left: 4px solid #7ecfff;
+      padding-left: 10px;
+      margin-top: 2em;
+    }
+    pre {
+      background: #181c20;
+      color: #e6e6e6;
+      border-radius: 8px;
+      padding: 18px 16px;
+      font-size: 1em;
+      line-height: 1.7;
+      overflow-x: auto;
+      margin: 1em 0 2em 0;
+      box-shadow: 0 2px 12px #0006;
+      border: 1px solid #2a2e35;
+    }
+    .log-list {
+      background: #20242a;
+      border-radius: 8px;
+      padding: 16px 16px 8px 16px;
+      margin-bottom: 2em;
+      box-shadow: 0 2px 12px #0004;
+      border-left: 4px solid #7ecfff;
+    }
+    .log-list ul {
+      margin: 0 0 0 1.2em;
+      padding: 0;
+      color: #b3e5ff;
+      font-size: 1em;
+    }
+    .log-list li {
+      margin-bottom: 0.4em;
+      line-height: 1.6;
+    }
+    @media (max-width: 600px) {
+      .container { padding: 10px 2vw; }
+      pre { font-size: 0.95em; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>McToQQ-Velocity 插件配置与文档</h1>
+
+    <h2>更新日志</h2>
+    <div class="log-list">
+      <ul>
+        <li>1.0.2 [ + ] 修复部分bug，[ + ] config新增 过滤规则 具体看文档</li>
+        <li>1.0.3 [ + ] 添加http 来 获取群名称</li>
+      </ul>
+    </div>
+
+    <h2>主配置 config.yml</h2>
+    <pre>
+正向ws: "ws://127.0.0.1:3001"
+开关: true
+http: "http://127.0.0.1:3000"
+信息传入游戏: true
+信息传入QQ: true
+# 群号列表
+群号:
+  - "288526441"
+  - "654321"
+
+# 消息格式配置
+格式:
+  ToQQ: "[MC] %player%: %message%"
+  ToMC: "[QQ] %user%: %message%"
+  # MC的信息可以有颜色代码&
+  # %user% -- QQ号
+  # %message% -- 信息
+  # %name% -- 群聊名字
+  # %groupID% -- 群号
+  # %groupName% -- 群名(需http)
+
+替换信息:
+  图片: "[图片]"
+  表情: "[表情]"
+  mface: "[某不知名图]" # 懒得测试了
+  艾特: "[艾特]"
+  群公告等json: "[群公告]"
+  视频: "[视频]"
+  文件: "[文件]"
+    </pre>
+
+    <div style="margin-top:2em;color:#888;font-size:0.95em;text-align:center;">
+      &copy; 2025 McToQQ 插件文档 | 适配暗黑风格，内容可复制
+    </div>
+  </div>
+</body>
+</html>

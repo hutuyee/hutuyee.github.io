@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>McQQRun-Bukkit 插件配置与文档</title>
+  <style>
+    body {
+      background: #181c20;
+      color: #e6e6e6;
+      font-family: 'JetBrains Mono', 'Fira Mono', 'Consolas', 'monospace', 'Microsoft YaHei', sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto 40px auto;
+      background: #23272e;
+      border-radius: 12px;
+      box-shadow: 0 4px 32px #000a;
+      padding: 32px 24px 24px 24px;
+    }
+    h1, h2, h3 {
+      color: #7ecfff;
+      font-weight: 700;
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
+    }
+    h1 {
+      font-size: 2.2em;
+      text-align: center;
+      margin-top: 0;
+    }
+    h2 {
+      font-size: 1.4em;
+      border-left: 4px solid #7ecfff;
+      padding-left: 10px;
+      margin-top: 2em;
+    }
+    pre {
+      background: #181c20;
+      color: #e6e6e6;
+      border-radius: 8px;
+      padding: 18px 16px;
+      font-size: 1em;
+      line-height: 1.7;
+      overflow-x: auto;
+      margin: 1em 0 2em 0;
+      box-shadow: 0 2px 12px #0006;
+      border: 1px solid #2a2e35;
+    }
+    .log-list {
+      background: #20242a;
+      border-radius: 8px;
+      padding: 16px 16px 8px 16px;
+      margin-bottom: 2em;
+      box-shadow: 0 2px 12px #0004;
+      border-left: 4px solid #7ecfff;
+    }
+    .log-list ul {
+      margin: 0 0 0 1.2em;
+      padding: 0;
+      color: #b3e5ff;
+      font-size: 1em;
+    }
+    .log-list li {
+      margin-bottom: 0.4em;
+      line-height: 1.6;
+    }
+    @media (max-width: 600px) {
+      .container { padding: 10px 2vw; }
+      pre { font-size: 0.95em; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>McQQRun 插件配置与文档</h1>
+
+    <h2>更新日志</h2>
+    <div class="log-list">
+      <ul>
+        <li>1.0 自定义ws地址、自定义提示</li>
+        <li>1.1 添加删除命令(QQ/ID)</li>
+        <li>1.2 添加删除命令(MineCraft)</li>
+        <li>1.3 添加控制台命令</li>
+        <li>1.4 添加第一次加入-自定义指令</li>
+        <li>1.5 添加查询服务器状态指令</li>
+        <li>1.6 服务器状态可让玩家使用，有选项开关</li>
+        <li>1.7 增加/减少/设置点券、Vault，修复白名单踢出提示</li>
+        <li>1.8 添加自定义命令(绑定等)</li>
+        <li>2.0 美化config，新增重连ws、修改群成员名称</li>
+        <li>3.0.0 优化白名单存储结构，新增加群验证</li>
+        <li>3.0.1 新增重载指令 mcqqrun reload</li>
+        <li>3.0.2 踢出提示支持%player_name%</li>
+        <li>3.0.3 控制台命令支持Rcon，Rcon可返回提示信息</li>
+        <li>New1.0 重构版本，Config略有变化，基本功能保留</li>
+        <li>New1.1 修复at在前面问题</li>
+        <li>New1.2 修复config少字符、增加自定义回答</li>
+        <li>New1.3 修复 删除 判断bug</li>
+        <li>New1.4 他人查看支持at查 -> Config有所改变</li>
+      </ul>
+    </div>
+
+    <h2>最新主配置 config.yml</h2>
+    <pre>
+ws: "ws://127.0.0.1:3001"
+
+BungeeCord: false   # true则不使用白名单功能(仅使用除绑定之类的功能)   false则使用
+
+KickMessage: |
+  您已被踢出服务器。
+  请联系管理员了解详情。
+  谢谢！
+
+Groups:
+  - "288526441"
+  - "114514"
+
+群管:
+  入群欢迎:
+    开关: false
+    提示词: "%艾特% 欢迎"
+  退群解绑:
+    开关: false
+  进群验证:
+    全局验证码过期时间: 5 # 单位 分钟 整数
+    固定:
+      开关: false
+      验证码: "我不是机器人"
+      提示词: "请在 %time% 分钟内输入：验证 %code% 以完成验证，否则将被移出群聊。"
+    随机:
+      开关: false
+      提示词: "请在 %time% 分钟内输入验证码：验证 %code% ，否则将被移出群聊。"
+      # 数字+字母组合的6位验证码
+  验证:
+    开关: false
+    指令: "验证 "
+
+主人:
+  QQ:
+    - "2368834255"
+    - "2139145308"
+  不是主人: "你想怎样"
+
+设置群员名称:
+  开关: false
+  格式: "超级帅的%id%" # %id% = 玩家ID
+
+绑定:
+  开关: true
+  指令: "绑定 "
+  提示: "%艾特% ID绑定成功"
+  QQ重复: "您的QQ已在白名单中，如ID错误，请联系管理员进行处理"
+  ID重复: "您的ID已在白名单中！"
+  查看绑定: "我的绑定"
+  查看: "您所绑定的ID是: %ID%\n您的QQ: %QQ%"
+
+  查看他人: true
+  查看他人命令: "他人绑定 "
+  是否at: true # true -> 保留原查看时的格式 如 他人绑定 @某某，则不变
+              # false -> 无论是at查还是QQ查 都转化为QQ号
+
+删除ID:
+  开关: true
+  指令: "删除ID "
+  不存在: "该ID不存在"
+  提示: "该ID已被删除"
+
+服务器状态:
+  开关: true
+  是否允许玩家使用: true
+  指令: "服务器状态"
+  format: "%TPS%\n在线玩家: %player_format%\n%player_all%"
+  nullPlayer: "    无人"
+
+删除QQ:
+  开关: true
+  指令: "删除QQ "
+  提示: "该QQ已被删除"
+  不存在: "该QQ不存在"
+
+Rcon:
+  IP: "127.0.0.1"
+  Port: 30001
+  Password: "a"
+
+控制台:
+  开关: true
+  使用Rcon: true
+  指令: "server "
+
+菜单:
+  开关: true
+  指令: "菜单"
+  菜单: |
+    请前往mcqqrun/config.yml修改
+    </pre>
+
+    <h2>公告 Annoucement.yml</h2>
+    <pre>
+开关: false
+公告:
+  "1":
+    time: 1500  #1000 = 1s
+    内容: "1.5s发送一次公告"
+  "abc":
+    time: 11500  #1000 = 1s
+    内容: "11.5s发送一次公告"
+  "aaaaa":
+    time: 1  #1000 = 1s
+    内容: "11aaaas发送一次公告"
+    </pre>
+
+    <h2>自定义回复 reply.yml</h2>
+    <pre>
+"1":
+  message: "菜单"
+  reply: "测试信息-菜单"
+  exact: false #exact是准确的意思
+"2":
+  message: "你好"
+  reply: "你好呀"
+  exact: true
+    </pre>
+    <h2>Command</h2>
+    <pre>1. mcqqrun reload</pre>
+
+    <div style="margin-top:2em;color:#888;font-size:0.95em;text-align:center;">
+      &copy; 2025 McQQRun 插件文档 | 适配暗黑风格，内容可复制
+    </div>
+  </div>
+</body>
+</html>

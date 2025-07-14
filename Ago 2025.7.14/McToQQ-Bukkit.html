@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>McToQQ-Bukkit 插件配置</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', Tahoma, Geneva, Verdana, sans-serif;
+            background: #181c24;
+            color: #e3e6eb;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #232837;
+            border-radius: 14px;
+            box-shadow: 0 4px 32px rgba(0,0,0,0.45);
+            padding: 36px 30px;
+        }
+        h1 {
+            color: #6cb6ff;
+            text-align: center;
+            margin-bottom: 24px;
+            letter-spacing: 2px;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 18px;
+            display: block;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 8px 12px;
+            margin: 8px 0 16px 0;
+            border: 1px solid #cfd8dc;
+            border-radius: 6px;
+            font-size: 16px;
+            background: #f4f4f8;
+        }
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+        .switch {
+            display: inline-block;
+            width: 44px;
+            height: 24px;
+            position: relative;
+            margin-right: 10px;
+        }
+        .switch input {display:none;}
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: #ccc;
+            border-radius: 24px;
+            transition: .4s;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background: white;
+            border-radius: 50%;
+            transition: .4s;
+        }
+        input:checked + .slider {
+            background: #008CBA;
+        }
+        input:checked + .slider:before {
+            transform: translateX(20px);
+        }
+        .section {
+            margin-bottom: 28px;
+        }
+        .group-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .group-item {
+            background: #e3f2fd;
+            color: #0056b3;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 15px;
+        }
+        .save-btn {
+            background: #008CBA;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 32px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 18px;
+            transition: background 0.2s;
+        }
+        .save-btn:hover {
+            background: #0056b3;
+        }
+        .desc {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .format-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 12px;
+        }
+        .format-table th, .format-table td {
+            border: 1px solid #cfd8dc;
+            padding: 6px 10px;
+            text-align: left;
+        }
+        .format-table th {
+            background: #f0f7fa;
+        }
+        pre {
+            background: #181c24;
+            border-radius: 8px;
+            padding: 18px 14px;
+            font-size: 15px;
+            overflow-x: auto;
+            color: #b8c7e0;
+            border: 1px solid #232837;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+        }
+        .log-list {
+            background: #20242a;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 2em;
+            box-shadow: 0 2px 12px #0004;
+            border-left: 4px solid #7ecfff;
+        }
+        .log-list ul {
+            margin: 0 0 0 1.2em;
+            padding: 0;
+            color: #b3e5ff;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>McToQQ 插件配置</h1>
+
+    <div class="container">
+        <h1>McToQQ 插件配置代码</h1>
+        <pre style="background:#181c20;color:#e6e6e6;border-radius:8px;padding:18px 16px;font-size:1em;line-height:1.7;overflow-x:auto;margin:1em 0 2em 0;box-shadow:0 2px 12px #0006;border:1px solid #2a2e35;">
+ws: "ws://127.0.0.1:3001"
+开关: true
+信息传入游戏: true
+信息传入QQ: true
+# 群号列表
+群号:
+  - "288526441"
+  - "654321"
+
+# 消息格式配置
+格式:
+  ToQQ: "[MC] %player%: %message%"
+  ToMC: "[QQ] %user%: %message%"
+  # MC的信息可以有颜色代码&
+  # %user% -- QQ号
+  # %message% -- 信息
+  # %name% -- 群聊名字
+  # %groupID% -- 群号
+  # %groupName% -- 群名(需http，暂没写)
+
+游戏事件:
+  加入游戏:
+    bool: false
+    m: "%player_name% 加入游戏"
+  离开游戏:
+    bool: false
+    m: "%player_name% 离开游戏"
+  死亡:
+    bool: false
+    m: "%player_name% 死亡"
+  # 游戏内发送至QQ
+替换信息:
+  图片: "[图片]"
+  表情: "[表情]"
+  mface: "[某不知名图]" # 懒得测试了
+  艾特: "[艾特]"
+  群公告等json: "[群公告]"
+  视频: "[视频]"
+  文件: "[文件]"
+        </pre>
+    </div>
+
+    <h2 style="color:#7ecfff;margin-top:2.5em;">插件日志/更新记录</h2>
+    <div class="log-list" style="background:#20242a;border-radius:8px;padding:16px 16px 8px 16px;margin-bottom:2em;box-shadow:0 2px 12px #0004;border-left:4px solid #7ecfff;">
+        <ul style="margin:0 0 0 1.2em;padding:0;color:#b3e5ff;font-size:1em;">
+            <li>2.0 重新优化逻辑，提升运行速度，新增自定义信息类型，重载 mctoqq reload</li>
+            <li>2.0.1 新增死亡/加入/离开 游戏事件</li>
+            <li>2.0.2 [ + ] 选择信息传入的对象</li>
+            <li>2.0.3 [ + ] 添加命令 mctoqq on --加入聊天白名单 / mctoqq off --去掉聊天白名单</li>
+            <li>[ + ] 修复某不知名bug</li>
+            <li>[ + ] config新增 过滤规则 具体看文档</li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>McQQRun-BungeeCord 插件配置与文档</title>
+  <style>
+    body {
+      background: #181c20;
+      color: #e6e6e6;
+      font-family: 'JetBrains Mono', 'Fira Mono', 'Consolas', 'monospace', 'Microsoft YaHei', sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto 40px auto;
+      background: #23272e;
+      border-radius: 12px;
+      box-shadow: 0 4px 32px #000a;
+      padding: 32px 24px 24px 24px;
+    }
+    h1, h2, h3 {
+      color: #7ecfff;
+      font-weight: 700;
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
+    }
+    h1 {
+      font-size: 2.2em;
+      text-align: center;
+      margin-top: 0;
+    }
+    h2 {
+      font-size: 1.4em;
+      border-left: 4px solid #7ecfff;
+      padding-left: 10px;
+      margin-top: 2em;
+    }
+    pre {
+      background: #181c20;
+      color: #e6e6e6;
+      border-radius: 8px;
+      padding: 18px 16px;
+      font-size: 1em;
+      line-height: 1.7;
+      overflow-x: auto;
+      margin: 1em 0 2em 0;
+      box-shadow: 0 2px 12px #0006;
+      border: 1px solid #2a2e35;
+    }
+    .log-list {
+      background: #20242a;
+      border-radius: 8px;
+      padding: 16px 16px 8px 16px;
+      margin-bottom: 2em;
+      box-shadow: 0 2px 12px #0004;
+      border-left: 4px solid #7ecfff;
+    }
+    .log-list ul {
+      margin: 0 0 0 1.2em;
+      padding: 0;
+      color: #b3e5ff;
+      font-size: 1em;
+    }
+    .log-list li {
+      margin-bottom: 0.4em;
+      line-height: 1.6;
+    }
+    @media (max-width: 600px) {
+      .container { padding: 10px 2vw; }
+      pre { font-size: 0.95em; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>McQQRun-BungeeCord 插件配置与文档</h1>
+
+    <h2>更新日志</h2>
+    <div class="log-list">
+      <ul>
+        <li>1.0 [ + ] 功能包含至Velocity 1.0.3</li>
+      </ul>
+    </div>
+
+    <h2>主配置 config.yml</h2>
+    <pre>
+正向ws: "ws://127.0.0.1:3001"
+
+踢出玩家: |
+  您已被踢出服务器。
+  请联系管理员了解详情。
+  谢谢！
+
+群号:
+  - "123456"
+  - "114514"
+
+防下线:
+  bool: false
+  group: ""
+  time: 35 # 分钟  为了防止被傻逼腾讯摸到规律 上下延迟5分钟
+  message: "每日活跃"
+群管:
+  入群欢迎:
+    开关: false
+    提示词: "%艾特% 欢迎"
+  退群解绑:
+    开关: false
+  进群验证:
+    全局验证码过期时间: 5 # 单位 分钟 整数
+    固定:
+      开关: false
+      验证码: "我不是机器人"
+      提示词: "请在 %time% 分钟内输入：验证 %code% 以完成验证，否则将被移出群聊。"
+    随机:
+      开关: false
+      提示词: "请在 %time% 分钟内输入验证码：验证 %code% ，否则将被移出群聊。"
+      # 数字+字母组合的6位验证码
+  验证:
+    指令: "验证 "
+
+主人:
+  QQ:
+    - "2368834255"
+    - "2139145308"
+  不是主人: "你想怎样"
+
+设置群员名称:
+  开关: false
+  格式: "超级帅的%id%" # %id% = 玩家ID
+
+绑定:
+  开关: true
+  指令: "绑定 "
+  提示: "%艾特% ID绑定成功"
+  QQ重复: "您的QQ已在白名单中，如ID错误，请联系管理员进行处理"
+  ID重复: "您的ID已在白名单中！"
+  查看绑定: "我的绑定"
+  查看: "绑定的ID是: %ID%\n用户: %QQ%"
+
+  查看他人: true
+  查看他人命令: "他人绑定 "
+  是否at: true # true -> 保留原查看时的格式 如 他人绑定 @某某，则不变
+  # false -> 无论是at查还是QQ查 都转化为QQ号
+删除ID:
+  开关: true
+  指令: "删除ID "
+  不存在: "该ID不存在"
+  提示: "该ID已被删除"
+
+服务器状态:
+  开关: true
+  是否允许玩家使用: true
+  指令: "服务器状态"
+  # BungeeCord仅获取玩家数量
+  format: "在线玩家: %player_format%"
+  nullPlayer: "  无人"
+
+删除QQ:
+  开关: true
+  指令: "删除QQ "
+  提示: "该QQ已被删除"
+  不存在: "该QQ不存在"
+
+菜单:
+  开关: true
+  指令: "菜单"
+  菜单: |
+    请前往mcqqrun/config.yml修改
+    </pre>
+
+    <div style="margin-top:2em;color:#888;font-size:0.95em;text-align:center;">
+      &copy; 2025 McQQRun 插件文档 | 适配暗黑风格，内容可复制
+    </div>
+  </div>
+</body>
+</html>
