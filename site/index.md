@@ -44,4 +44,4 @@ features:
 
 ShitBot 文档包含当前源码中的新功能，下载安装包时请使用包含相应功能的版本。音乐插件与音乐源要匹配 AllMusic 的接口版本，具体要求见各自安装页。
 
-[文档来源与更新](./sources.md) · [历史插件页面](https://hutuyee.github.io/)
+[文档来源与更新](./sources.md)

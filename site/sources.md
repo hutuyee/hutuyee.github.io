@@ -18,6 +18,6 @@
 
 ## 网站维护
 
-网站源码位于 `hutuyee.github.io` 仓库的 `site/`，生成的静态文件位于 `docs/`，公开地址是 `https://hutuyee.github.io/docs/`。原有 McQQRun 与 McToQQ 页面仍保留在根目录。
+网站源码位于 `hutuyee.github.io` 仓库的 `site/`，生成的静态文件位于 `docs/`，公开地址是 `https://hutuyee.github.io/docs/`。访问网站首页 `https://hutuyee.github.io/` 会自动进入文档中心。
 
 ShitBot 文档更新后，在网站仓库执行 `npm run docs:sync -- <ShitBot仓库路径>` 同步，再使用 `npm run docs:build` 生成公开文件。将源码和生成文件一起提交到 `main`，现有 GitHub Pages 会继续按根目录发布。站点生成与路径配置参考 [VitePress 部署文档](https://vitepress.dev/guide/deploy)。

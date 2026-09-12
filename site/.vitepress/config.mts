@@ -43,7 +43,6 @@ export default defineConfig({
       { text: 'ShitBot', link: '/shitbot/' },
       { text: 'BiliMusicBridge', link: '/bilimusicbridge/' },
       { text: 'AllMusic 音乐源', link: '/allmusic/' },
-      { text: '旧版文档', link: 'https://hutuyee.github.io/' },
     ],
     sidebar: {
       '/shitbot/': shitbot,
