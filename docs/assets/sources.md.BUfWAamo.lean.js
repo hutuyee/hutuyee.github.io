@@ -1,0 +1,1 @@
+import{_ as e,o as r,c as a,ag as i}from"./chunks/framework.BwSLX4ak.js";const _=JSON.parse('{"title":"关于文档","description":"","frontmatter":{},"headers":[],"relativePath":"sources.md","filePath":"sources.md"}'),u={name:"sources.md"};function o(h,t,l,s,d,c){return r(),a("div",null,[...t[0]||(t[0]=[i("",9)])])}const b=e(u,[["render",o]]);export{_ as __pageData,b as default};
