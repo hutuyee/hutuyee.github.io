@@ -32,13 +32,13 @@ const shitbot = [
 export default defineConfig({
   lang: 'zh-CN',
   title: 'H_aaa 插件文档',
-  description: 'ShitBot 群服互通、BiliMusicBridge 直播点歌和 AllMusic QQMusic / Kugou 音乐源的安装、配置与开发文档。',
+  description: 'ShitBot、BiliMusicBridge 和 AllMusic 音乐源的使用说明：安装、配置、常见问题和开发接口。',
   base: '/docs/',
   outDir: fileURLToPath(new URL('../../docs', import.meta.url)),
   cleanUrls: false,
-  head: [['link', { rel: 'icon', type: 'image/svg+xml', href: '/docs/logo.svg' }]],
+  head: [['link', { rel: 'icon', type: 'image/jpeg', href: '/docs/avatar.jpg' }]],
   themeConfig: {
-    logo: '/logo.svg',
+    logo: { src: '/avatar.jpg', alt: 'H_aaa 的头像' },
     nav: [
       { text: 'ShitBot', link: '/shitbot/' },
       { text: 'BiliMusicBridge', link: '/bilimusicbridge/' },

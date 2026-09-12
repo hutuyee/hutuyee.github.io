@@ -2,11 +2,11 @@
 layout: home
 hero:
   name: H_aaa 插件文档
-  text: 把群聊、直播与音乐带进 Minecraft
-  tagline: 从第一次安装到日常管理，在这里找到配置示例、命令说明和开发接口。
+  text: 群服互通、直播点歌和音乐源
+  tagline: 几个 Minecraft 插件的使用说明。第一次装插件，或者想查配置、找命令，都可以从这里开始。
   image:
-    src: /logo.svg
-    alt: H_aaa
+    src: /avatar.jpg
+    alt: H_aaa 的头像
   actions:
     - theme: brand
       text: 开始使用 ShitBot
@@ -19,15 +19,15 @@ hero:
       link: /allmusic/
 features:
   - title: ShitBot
-    details: OneBot v11 群服互通、QQ 绑定与白名单、在线图、背包查询、图片模板和插件 API。
+    details: 把 QQ 群和服务器连起来，同步聊天、绑定账号、管理白名单，还能查在线玩家和背包。
     link: /shitbot/
     linkText: 阅读 ShitBot 文档
   - title: BiliMusicBridge
-    details: 将 B 站直播弹幕点歌接入 AllMusic 的搜索和队列，支持 Bukkit、Folia 与两种代理平台。
+    details: 在 B 站直播间发弹幕点歌，歌曲会加入 AllMusic 队列，在游戏里播放。
     link: /bilimusicbridge/
     linkText: 阅读直播点歌文档
   - title: QQMusic 与 Kugou
-    details: 为 AllMusic 添加 QQ 音乐和酷狗音乐搜索、歌曲信息、封面、歌词与可用播放地址。
+    details: 给 AllMusic 加上 QQ 音乐和酷狗音乐，用你习惯的音乐源搜索和点歌。
     link: /allmusic/
     linkText: 阅读音乐源文档
 ---
@@ -42,6 +42,6 @@ features:
 | 让直播观众通过弹幕点歌 | [BiliMusicBridge 快速开始](./bilimusicbridge/index.md) |
 | 为 AllMusic 选择 QQ 音乐或酷狗 | [音乐源安装](./allmusic/index.md) |
 
-ShitBot 文档包含当前源码中的新功能，下载安装包时请使用包含相应功能的版本。音乐插件与音乐源要匹配 AllMusic 的接口版本，具体要求见各自安装页。
+插件版本不同，配置和命令也可能有差别。下载时先看对应项目的 Release 说明；音乐插件还需要留意 AllMusic 的版本要求。
 
-[文档来源与更新](./sources.md)
+[关于文档与反馈](./sources.md)
