@@ -37,4 +37,4 @@ providers:
 
 BungeeCord/Velocity 通过认证后端通道请求目标 Spigot 子服解析，代理不加载 Bukkit 的 PlaceholderAPI；`server` 使用代理中配置的子服名。Nukkit-MOT 不支持 Bukkit PAPI，可以用 ShitBot 内置数据提供器或第三方自定义提供器。
 
-完整的查询限制、缓存、线程调度、错误显示和命令示例见[图片渲染与高级模板](image-templates.md#placeholderapi-与代理后端)。扩展接入方式遵循 [PlaceholderAPI 的内置扩展接口](https://wiki.placeholderapi.com/developers/creating-a-placeholderexpansion/)。
+完整的查询限制、缓存、线程调度、错误显示和命令示例见[图片渲染与高级模板](/shitbot/image-templates.md#placeholderapi-与代理后端)。扩展接入方式遵循 [PlaceholderAPI 的内置扩展接口](https://wiki.placeholderapi.com/developers/creating-a-placeholderexpansion/)。

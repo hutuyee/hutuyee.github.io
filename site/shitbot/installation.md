@@ -86,7 +86,7 @@ deployment:
 4. 让代理与所有后端连接同一个 MySQL 数据库；
 5. 配置 `commands.yml` 中的认证命令通道。
 
-完整步骤见[代理与后端子服](proxy-backend.md)。
+完整步骤见[代理与后端子服](/shitbot/proxy-backend.md)。
 
 ## Nukkit-MOT 单服
 
@@ -122,7 +122,7 @@ Minecraft: #qq 要发送到 QQ 群的内容
 QQ 群:     #mc 要发送到游戏的内容
 ```
 
-修改完成后执行 `/shitbot reload`。更多选项见[配置说明](configuration.md)。
+修改完成后执行 `/shitbot reload`。更多选项见[配置说明](/shitbot/configuration.md)。
 
 ## 安装完成后的检查
 
@@ -135,4 +135,4 @@ QQ 群:     #mc 要发送到游戏的内容
 5. 开启转发后，`#qq` 和 `#mc` 两个方向均符合预期；
 6. 使用代理—后端模式时，`TPS <子服名>` 能到达指定子服。
 
-发生问题时见[常见问题](troubleshooting.md)。
+发生问题时见[常见问题](/shitbot/troubleshooting.md)。

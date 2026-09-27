@@ -85,4 +85,4 @@ BungeeCord、Velocity、Nukkit 的主类同样实现 `ShitBotApiProvider`，通�
 
 ## 图片接口
 
-图片渲染、模板列表、数据提供器注册和编辑器登录仍通过同一个 API 提供。`renderImage` 返回 PNG 字节、宽高、内容类型、建议文件名、模板 ID 和版本；示例与数据提供器约定见[图片渲染与高级模板](image-templates.md#插件-api)。
+图片渲染、模板列表、数据提供器注册和编辑器登录仍通过同一个 API 提供。`renderImage` 返回 PNG 字节、宽高、内容类型、建议文件名、模板 ID 和版本；示例与数据提供器约定见[图片渲染与高级模板](/shitbot/image-templates.md#插件-api)。

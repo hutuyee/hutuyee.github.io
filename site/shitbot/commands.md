@@ -3,7 +3,7 @@
 白名单管理命令 `/shitbot whitelist` 适用于全部平台，需要 `shitbot.admin`。使用
 `/shitbot whitelist add - Steve` 添加无 QQ 白名单，使用
 `/shitbot whitelist add 123456789 Steve` 直接添加 QQ 绑定。
-删除、分页和 QQ 查询的完整语法见[插件 API 与白名单管理](api.md#管理员命令)。
+删除、分页和 QQ 查询的完整语法见[插件 API 与白名单管理](/shitbot/api.md#管理员命令)。
 
 ## 管理命令
 
@@ -134,7 +134,7 @@ image-templates:
 | `cooldown-seconds` | 该模板命令独立的群号＋QQ 冷却 |
 | `usage` / `failed` | 参数错误与生成失败回复；支持 `%at%`、`%result%`、`%command%` 和 `%server%` |
 
-权限请求只判断权限，不执行控制台命令。`player-source: none` 与非空 `permission` 不能组合成有效授权，因为没有游戏角色可供校验。该功能还要求 `config.yml` 中 `custom-image-templates.enabled: true`；完整说明见[图片渲染与高级模板](image-templates.md)。
+权限请求只判断权限，不执行控制台命令。`player-source: none` 与非空 `permission` 不能组合成有效授权，因为没有游戏角色可供校验。该功能还要求 `config.yml` 中 `custom-image-templates.enabled: true`；完整说明见[图片渲染与高级模板](/shitbot/image-templates.md)。
 
 ## 权限检查顺序
 

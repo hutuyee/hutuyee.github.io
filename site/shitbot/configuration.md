@@ -21,6 +21,18 @@ language: "zh_CN"
 
 语言文件缺少某个键时会回退到 `zh_CN.yml`，因此自定义语言可以在后续版本新增文本时继续工作；建议仍然定期与最新内置文件比较并补齐键。必须保留 `%player%`、`%result%` 等占位符。Minecraft 文本支持 `&` 颜色代码。
 
+## 调试模式
+
+本地测试时可以在 `config.yml` 顶层开启：
+
+```yaml
+debug: true
+```
+
+开启后会输出 OneBot 鉴权 token、发送给 QQ 的请求 JSON 和 QQ 返回的原始 JSON。启用高级图片模板时，只加载插件数据目录下的 `components/image-renderer/<版本>/ShitBotRenderer-<版本>.jar`，不会下载渲染组件。`<版本>` 取自 `custom-image-templates.component.version`，留空时使用当前平台插件版本。
+
+本地 JAR 仍会检查大小、组件服务入口和内嵌版本，但会跳过 SHA-256、`.sig` 和公钥校验；本地 JAR 缺失或无效时直接报错，不会回退到 Release 下载。调试结束后请关闭此选项，因为日志包含敏感 token 和消息内容。
+
 ### 从旧配置迁移文本
 
 加载 `config-version: 1` 的旧 `config.yml` 时，ShitBot 会自动把以下内容写入数据目录中的 `lang/zh_CN.yml`：
@@ -82,7 +94,7 @@ onebot:
 - BungeeCord/Velocity：留空时通知代理启动；填写代理配置中的子服名时，代理会持续检查该子服，首次可连接后通知。
 - 通知发送到全部 `allowed-group-ids`。
 
-具体配置示例、状态 ping 的含义和重载时的补发规则见[服务器启动提醒](startup-notices.md)。
+具体配置示例、状态 ping 的含义和重载时的补发规则见[服务器启动提醒](/shitbot/startup-notices.md)。
 
 ### 入群欢迎与退群解绑
 
@@ -173,7 +185,7 @@ database:
     file: "shitbot.db"
 ```
 
-单实例可以使用 SQLite。代理与多个后端必须使用 MySQL，且全部实例连接同一个数据库。完整配置和迁移流程见[数据库与数据迁移](database.md)。
+单实例可以使用 SQLite。代理与多个后端必须使用 MySQL，且全部实例连接同一个数据库。完整配置和迁移流程见[数据库与数据迁移](/shitbot/database.md)。
 
 ## 在线状态图片
 
@@ -230,17 +242,21 @@ image:
 custom-image-templates:
   enabled: false
   directory: "image-templates"
+  remote-images:
+    enabled: true
 ```
 
-只有 `custom-image-templates.enabled: true` 时，插件才检查本地缓存并按需下载同版本 `ShitBotRenderer`、checksum 和签名。保持 `image.renderer: "java"` 时，默认在线图仍走内置路径，但高级编辑器、自定义群命令和插件 API 可以单独使用；设为 `custom` 时，`服务器状态` 和 `/shitbot image` 读取 `image.custom-template` 指定的发布版本。
+只有 `custom-image-templates.enabled: true` 时，插件才加载同版本 `ShitBotRenderer`。正常模式会检查本地缓存并按需下载组件、checksum 和签名；`debug: true` 时只使用对应版本目录里的本地 JAR，不会下载。保持 `image.renderer: "java"` 时，默认在线图仍走内置路径，但高级编辑器、自定义群命令和插件 API 可以单独使用；设为 `custom` 时，`服务器状态` 和 `/shitbot image` 读取 `image.custom-template` 指定的发布版本。
 
-完整组件配置、场景 YAML、数据提供器、编辑器和 API 见[图片渲染与高级模板](image-templates.md)。
+高级模板的 HTTPS 远程图片默认开启，默认在线模板会使用 `image.avatar.url-template` 获取玩家头像。总开关关闭时不会因这一设置加载高级组件。旧配置中显式设置的 `remote-images.enabled: false` 会保留，需要头像时改为 `true` 后重载。
+
+完整组件配置、场景 YAML、数据提供器、编辑器和 API 见[图片渲染与高级模板](/shitbot/image-templates.md)。
 
 ## 背包查询
 
 `inventory` 控制图片模板、快照间隔、离线保留时间、渲染并发和材质来源。群组服需要让后端保存快照，并让代理通过共享 MySQL 读取快照。
 
-材质包、客户端 JAR、Mod 物品和自定义图标的配置见[背包查询与材质配置](inventory.md)。
+材质包、客户端 JAR、Mod 物品和自定义图标的配置见[背包查询与材质配置](/shitbot/inventory.md)。
 
 ## 自定义文本
 
@@ -267,4 +283,4 @@ YAML 多行消息应使用 `|`，并保持后续行缩进一致。不要删除�
 - 高级图片模板的群聊别名、绑定玩家来源、目标子服、权限和独立冷却；
 - BungeeCord/Velocity 到 Spigot 后端的认证通道。
 
-内置 TPS 与 `luckperms-editor` 的别名和回复模板位于语言文件；新增自定义快捷命令时，可以暂时在 `commands.yml` 中填写 `aliases`、`message` 和 `failed`，也可以在语言文件的 `console.shortcuts.<名称>` 下提供同名文本。命令配置见[命令与权限](commands.md)，代理通道见[代理与后端子服](proxy-backend.md)。
+内置 TPS 与 `luckperms-editor` 的别名和回复模板位于语言文件；新增自定义快捷命令时，可以暂时在 `commands.yml` 中填写 `aliases`、`message` 和 `failed`，也可以在语言文件的 `console.shortcuts.<名称>` 下提供同名文本。命令配置见[命令与权限](/shitbot/commands.md)，代理通道见[代理与后端子服](/shitbot/proxy-backend.md)。

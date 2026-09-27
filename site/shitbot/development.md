@@ -115,7 +115,7 @@ GitHub Actions 在 push、pull request 和手动触发时：
 2. 检查六个 JAR、六个 checksum 和六个签名；
 3. 将 JAR、`.sha256` 和 `.sig` 上传到 Release。
 
-签名密钥管理见[升级与自动更新](updating.md)。
+签名密钥管理见[升级与自动更新](/shitbot/updating.md)。
 
 ## 发布前文档
 
@@ -126,3 +126,9 @@ GitHub Actions 在 push、pull request 和手动触发时：
 - 数据库是否发生迁移；
 - Java 或平台最低版本是否变化；
 - 是否新增权限、端口或外部网络依赖。
+
+## 双语文档维护
+
+中文文档保留在 `README.md` 和 `docs/*.md`，英文文档位于 `README.en.md` 和 `docs/en/*.md`，手册文件名一一对应。更新功能说明时同步维护两种语言，并保留每页顶部的语言链接。
+
+网站仓库通过 `npm run docs:sync -- ../ShitBot` 同时复制中英文手册到对应语言目录。通用模板示例仍放在 `docs/examples/`。

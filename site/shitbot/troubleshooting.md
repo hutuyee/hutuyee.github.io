@@ -90,7 +90,7 @@ MySQL：
 8. 防火墙只允许代理访问监听端口；
 9. 代理和后端系统时间正常。
 
-详细配置见[代理与后端子服](proxy-backend.md)。
+详细配置见[代理与后端子服](/shitbot/proxy-backend.md)。
 
 ## 快捷命令提示没有权限
 
@@ -108,7 +108,7 @@ MySQL：
 - 运行图片渲染的一端可以访问资源包、客户端核心或导出的图标；
 - 历史快照可能需要玩家重新上线才能取得新版字段和玩家头数据。
 
-完整说明见[背包查询与材质配置](inventory.md)。
+完整说明见[背包查询与材质配置](/shitbot/inventory.md)。
 
 ## 图片中文显示异常
 
@@ -121,12 +121,13 @@ MySQL：
 需要时检查：
 
 - `image.renderer: "custom"` 必须同时开启高级模板总开关；
-- 当前 Release 含同版本 `ShitBotRenderer-<版本>.jar`、`.sha256` 和 `.sig`；
-- 服务器能访问 GitHub Release 下载域名；
-- `components/image-renderer/<版本>/` 可写，缓存文件没有被人工替换；
+- `debug: true` 时，插件数据目录下存在 `components/image-renderer/<版本>/ShitBotRenderer-<版本>.jar`，且组件元数据与版本正确；此模式不会下载，也不需要 `.sha256` 和 `.sig`；
+- `debug: false` 时，当前 Release 含同版本 `ShitBotRenderer-<版本>.jar`、`.sha256` 和 `.sig`；
+- `debug: false` 时，服务器能访问 GitHub Release 下载域名；
+- `debug: false` 时，`components/image-renderer/<版本>/` 可写，缓存文件没有被人工替换；
 - 下载大小、模板资源、画布、像素、图层、循环、渲染时间和队列没有超过配置限制；
 - 模板已发布，`image.custom-template` 或群命令中的模板 ID 拼写正确；
-- 远程图片默认关闭，引用 HTTPS 头像或图片时已明确开启；
+- 远程图片默认开启；旧配置若仍写着 `custom-image-templates.remote-images.enabled: false`，使用 HTTPS 头像或图片前需改为 `true` 后重载；默认在线模板还需 `image.avatar.enabled: true` 才会提供玩家头像地址；
 - PAPI 模板在 Spigot 后端安装了 PlaceholderAPI，玩家在线，代理 endpoint 与 `target-server` 正确。
 
 编辑器打不开时，还要确认 `editor.enabled: true`，重新执行 `/shitbot editor` 获取未使用的新链接。反向代理必须使用 HTTPS、保留原始 `Host`，内部监听仍保持回环地址。
