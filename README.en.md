@@ -25,4 +25,4 @@ Maintain BiliMusicBridge and music source Chinese pages in their project directo
 ## Contact
 
 - QQ: 2139145308
-- WeChat: qq2139145308
+- WeChat: hutuyee
