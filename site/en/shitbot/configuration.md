@@ -9,6 +9,10 @@ On first startup, ShitBot generates these files in its data directory:
 
 The configuration files include comments. Run `/shitbot reload` after editing. Restart normally after changing the plugin JAR, Java, TLS certificates, or server software.
 
+Every startup and `/shitbot reload` completes `config.yml`, `commands.yml`, both bundled language files, and the default image theme from the current bundled defaults, then saves the result to disk. Deleted or empty files, missing keys, and values written as `key:` or `key: null` are restored. Existing values, custom keys, and YAML comments are retained. Explicit `false`, `0`, `""`, and `[]` are preserved, and lists are never merged by position. Complete files are not rewritten. Invalid YAML is reported without replacing the original file.
+
+The selected custom language is completed from the data directory's `lang/zh_CN.yml`, and selected custom image themes from `templates/default.yml`. Missing selected files are also created. Added fields become editable values in those files. See [Image templates](/en/shitbot/image-templates.md#template-directory) for recovery of the default advanced template draft.
+
 ## Language files
 
 Use a language filename without its extension at the top level of `config.yml`:
@@ -19,7 +23,7 @@ language: "en_US"
 
 The default is `zh_CN`. To add another language, copy `lang/zh_CN.yml` or `lang/en_US.yml`, rename it (for example, `zh_TW.yml`), translate it, and set `language: "zh_TW"`. Names may contain only letters, digits, underscores, and hyphens.
 
-Missing keys fall back to `zh_CN.yml`, so custom languages continue working as new text is added. Still compare them with the latest bundled files periodically and add missing keys. Preserve placeholders such as `%player%` and `%result%`. Minecraft text supports `&` color codes.
+The built-in `zh_CN.yml` and `en_US.yml` are each completed from their matching bundled language. Missing custom-language keys are copied from the data directory's `zh_CN.yml` and saved so you can translate the new entries directly. Preserve placeholders such as `%player%` and `%result%`. Minecraft text supports `&` color codes.
 
 ## Debug mode
 
@@ -42,7 +46,7 @@ When loading a `config-version: 1` configuration, ShitBot automatically writes t
 - Binding, online image, and inventory command aliases and usage.
 - Online image and inventory image titles.
 
-The old `config.yml` is neither rewritten nor deleted. After a successful migration, `zh_CN.yml` receives this internal marker to prevent subsequent reloads from overwriting the language file:
+Existing values and old text entries in `config.yml` are retained while missing settings are added. Language migration runs before main configuration completion, including for legacy files without `config-version`. After a successful migration, `zh_CN.yml` receives this internal marker to prevent subsequent reloads from overwriting the language file:
 
 ```yaml
 _migration:
@@ -219,7 +223,24 @@ inventory:
   template: "ocean"
 ```
 
-`image.template` and `inventory.template` can select different files. Names may contain only letters, digits, underscores, and hyphens. Each missing field falls back to `templates/default.yml`, so a custom file can contain only the fields you want to override.
+`image.template` and `inventory.template` can select different files. Names may contain only letters, digits, underscores, and hyphens. You can initially write only the fields you want to override; startup or reload copies the remaining fields from `templates/default.yml` and saves them. Values already present in the custom file are retained.
+
+## Personal profiles
+
+Group members can send `profile` or `personal profile`, optionally followed by one of their own bound Minecraft IDs. The built-in card is controlled by `profile`:
+
+```yaml
+profile:
+  skin-url-template: "https://mc-heads.net/body/%player%/180"
+  permission-group-placeholder: "%luckperms_primary_group_name%"
+  points-placeholder: "%playerpoints_points%"
+  target-server: ""
+  output-file: "profile.png"
+```
+
+Permission group and points use PlaceholderAPI (proxies forward through `target-server`). Missing plugins, offline players, empty values, and resolution failures hide the field without failing the image. ShitBot stores accumulated online time in `shitbot_player_stats`; external templates can read it through the `player-profile` provider.
+
+Advanced templates include an editable profile card under `image-templates/player-profile/`. Enable `image-templates.commands.player-profile.enabled` in `commands.yml` to query a bound character with `custom profile`; see [Profile and inventory templates](/en/shitbot/image-templates.md#profile-and-inventory-templates) for setup.
 
 Themes control layout dimensions, font sizes, corner radii, strokes, background gradients, cards, text, status colors, slots, and placeholder avatars. Supported colors:
 
