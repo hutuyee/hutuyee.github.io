@@ -19,7 +19,7 @@
 
 ## Maintenance and development
 
-- [Plugin API and whitelist management](/en/shitbot/api.md): asynchronous binding APIs, admin commands, and whitelist entries without QQ.
+- [Plugin API and whitelist management](/en/shitbot/api.md): asynchronous bindings, whitelist entries without QQ, image rendering, Base64, and file export.
 - [Platform compatibility](/en/shitbot/compatibility.md): recorded environments, platform differences, and optional dependencies.
 - [Upgrading and automatic updates](/en/shitbot/updating.md): manual upgrades, `/shitbot update`, and release signatures.
 - [Production security checklist](/en/shitbot/security.md): OneBot, databases, command transport, permissions, and logs.
