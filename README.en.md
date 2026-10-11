@@ -16,7 +16,7 @@ npm run docs:sync -- ../ShitBot
 npm run docs:build
 ```
 
-`docs:sync` copies the specified ShitBot repository's `docs/*.md` and `docs/en/*.md` into `site/shitbot/` and `site/en/shitbot/`, respectively, and copies the shared pixel-template examples. It rewrites repository documentation links to their website locations and removes the per-page repository language links replaced by the website menu.
+`docs:sync` copies the specified ShitBot repository's `docs/*.md` and `docs/en/*.md` into `site/shitbot/` and `site/en/shitbot/`, respectively, and copies the shared pixel-template examples. It rewrites repository documentation links to their website locations and removes the per-page repository language links replaced by the website menu. The Spark section from each language's repository README is appended to its documentation index, and the screenshot is copied into `site/public/images/shitbot/`.
 
 Maintain BiliMusicBridge and music source Chinese pages in their project directories under `site/`, with English counterparts under `site/en/`. Compare against the corresponding repositories and update both languages. New pages must have matching filenames in both languages; update bilingual navigation in `site/.vitepress/config.mts`. Keep the homepage and about page paired as well.
 

@@ -28,3 +28,7 @@
 For a first installation, read [Installation and deployment](/en/shitbot/installation.md), then [Configuration](/en/shitbot/configuration.md). Configure [Proxies and backend servers](/en/shitbot/proxy-backend.md) only if you need QQ commands to run on backends.
 
 QQ command examples in these English pages use the built-in `en_US` aliases unless stated otherwise. Set `language: "en_US"` in `config.yml` and reload to use them. Changing the documentation language does not change the plugin's configuration.
+
+## Spark
+
+![spark](/images/shitbot/spark.png)

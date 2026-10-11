@@ -16,7 +16,7 @@ npm run docs:sync -- ../ShitBot
 npm run docs:build
 ```
 
-`docs:sync` 从指定 ShitBot 仓库的 `docs/*.md` 与 `docs/en/*.md` 复制中英文手册，分别写入 `site/shitbot/` 与 `site/en/shitbot/`，并复制共用的像素模板示例。脚本将仓库内文档链接转换为对应网站地址，移除已由网站语言菜单替代的页首语言链接。
+`docs:sync` 从指定 ShitBot 仓库的 `docs/*.md` 与 `docs/en/*.md` 复制中英文手册，分别写入 `site/shitbot/` 与 `site/en/shitbot/`，并复制共用的像素模板示例。脚本将仓库内文档链接转换为对应网站地址，移除已由网站语言菜单替代的页首语言链接。中英文 README 的 Spark 部分会追加到对应文档首页，截图复制到 `site/public/images/shitbot/`。
 
 BiliMusicBridge 与音乐源中文文档维护在 `site/` 的各项目目录，英文文档维护在 `site/en/` 的对应目录。更新时对照对应仓库源码，同步修改两种语言；新增页面时保持两种语言的文件名一致，并更新 `site/.vitepress/config.mts` 的双语导航。首页和关于页也应成对维护。
 

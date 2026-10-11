@@ -26,3 +26,7 @@
 - [构建与开发](/shitbot/development.md)：Maven 构建、模块结构和发布产物。
 
 第一次安装时，依次阅读[安装与部署](/shitbot/installation.md)和[配置说明](/shitbot/configuration.md)即可。只有需要从 QQ 在子服执行命令时，才需要配置[代理与后端子服](/shitbot/proxy-backend.md)。
+
+## Spark
+
+![spark](/images/shitbot/spark.png)
